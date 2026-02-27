@@ -1,0 +1,14 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Inter', sans-serif;
+    background-color: black;
+  }
+}
+
+@layer utilities {
+  .font-romantic {
+    font-family: 'Playfair Display', serif;
+  }
+}
