@@ -1,8 +1,12 @@
 import { motion } from "motion/react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { useMusic } from "../context/MusicContext";
 
 export default function Letter() {
-  const [showHidden, setShowHidden] = useState(false);
+  const [showVideo, setShowVideo] = useState(false);
+  const videoRef = useRef(null);
+
+  const { pauseMusic, playMusic } = useMusic();
 
   const mainPoem = [
     "I dedicate this to you, the one who brings out the best in me too.",
@@ -29,59 +33,39 @@ export default function Letter() {
     "as you are to me."
   ];
 
-  const hiddenPoem = [
-    "When someone's smile makes your Her happiness, to last forever, makes you pray;",
-    "",
-    "Her arms feels lika a sheltered cove, her kind face similer to a sacred grove.",
-    "",
-    "Her beauty to cherish forever, Eyes as gorgeous as peacock's feather;",
-    "when her sadness makes you a griever,",
-    "but all u need is to be together.",
-    "",
-    "When the distances makes you wither,",
-    "with memories both sweet and bitter;",
-    "",
-    "wishing to reside in her honest heart,",
-    "desiring her care and to be her forever counterpart.",
-    "",
-    "Then your love for her bear no bounds,",
-    "Maybe the love of your life has been found;",
-    "",
-    "But the utmost feeling of love cannot be contained,",
-    "In the poem which I extend."
-  ];
-
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20">
+    <section className="min-h-screen flex flex-col items-center justify-center px-6 py-20 text-center text-gray-200">
 
-        <motion.h2
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ duration: 1 }}
-  className="text-3xl sm:text-4xl font-semibold mb-10 text-gray-200"
->
-  For the girl who deserves to be adored —
-</motion.h2>
+      {/* Heading */}
+      <motion.h2
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 1 }}
+        className="text-3xl sm:text-4xl font-romantic font-light mb-10"
+      >
+        For the girl who deserves to be adored —
+      </motion.h2>
 
-<motion.p
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  transition={{ delay: 0.3 }}
-  className="mb-12 text-lg text-gray-200 max-w-xl mx-auto leading-relaxed"
->
-  Not just today.  
-  Not just because it’s your birthday.  
-  But because you are you.
-</motion.p>
+      <motion.p
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ delay: 0.3 }}
+        className="mb-12 text-lg text-gray-300 max-w-xl leading-relaxed"
+      >
+        Not just today.  
+        Not just because it’s your birthday.  
+        But because you are you.
+      </motion.p>
 
+      {/* Main Poem Card */}
       <motion.div
         initial="hidden"
         whileInView="visible"
         variants={{
           hidden: {},
-          visible: { transition: { staggerChildren: 0.25 } }
+          visible: { transition: { staggerChildren: 0.2 } }
         }}
-        className="bg-white/10 backdrop-blur-xl p-10 rounded-3xl max-w-2xl text-gray-200 border border-white/10 shadow-2xl font-romantic leading-relaxed text-lg"
+        className="bg-white/10 backdrop-blur-xl p-10 rounded-3xl max-w-2xl border border-white/10 shadow-2xl font-romantic leading-relaxed text-lg"
       >
         {mainPoem.map((line, i) => (
           <motion.p
@@ -95,27 +79,36 @@ export default function Letter() {
           </motion.p>
         ))}
 
-        {!showHidden && (
+        {!showVideo && (
           <motion.button
             whileHover={{ scale: 1.05 }}
-            onClick={() => setShowHidden(true)}
-            className="mt-8 px-6 py-3 bg-white/30 rounded-full shadow-lg"
+            whileTap={{ scale: 0.95 }}
+            onClick={() => setShowVideo(true)}
+            className="mt-10 px-8 py-3 bg-gradient-to-r from-amber-200/20 to-rose-200/20 border border-white/20 rounded-full text-amber-100 font-medium transition"
           >
-            There's something else...
+            There's something I need to tell you...
           </motion.button>
         )}
       </motion.div>
 
-      {showHidden && (
+      {/* Video Reveal */}
+      {showVideo && (
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="mt-16 max-w-2xl text-center space-y-3 text-base sm:text-lg leading-relaxed"
+          className="mt-16 bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl max-w-3xl w-full"
         >
-          {hiddenPoem.map((line, i) => (
-            <motion.p key={i}>{line}</motion.p>
-          ))}
+          <video
+            ref={videoRef}
+            controls
+            className="rounded-2xl w-full"
+            onPlay={() => pauseMusic()}
+            onPause={() => playMusic()}
+            onEnded={() => playMusic()}
+          >
+            <source src="/video/sakshi-birthday.mp4" type="video/mp4" />
+          </video>
         </motion.div>
       )}
 

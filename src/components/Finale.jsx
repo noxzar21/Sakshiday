@@ -17,11 +17,17 @@ export default function Finale() {
         transition={{ delay: 1.5 }}
         className="mt-20 text-lg text-gray-300"
       >
-        If I had to choose again…
+        And if life asked me again ...
         <br />
-        I would still choose you.
+        who I would choose
         <br />
-        In every lifetime.
+        in every lifetime.
+        <br />
+        the answer would still be the same.
+        <br />
+        <br />  
+        <span className=" text-2xl border-2  rounded-md p-1 bg-gray-900 border-black
+         font-romantic font-extrabold">YOU</span>.
       </motion.p>
 
       <p className="mt-14 text-amber-100 text-lg font-romantic tracking-wide">

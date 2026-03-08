@@ -8,41 +8,74 @@ export default function GoddessSection() {
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 1 }}
-        className="text-3xl sm:text-5xl font-light mb-12"
+        className="text-4xl sm:text-6xl font-romantic font-light mb-14 text-white"
       >
-        You were never meant to be compared.
+        There’s something about you.
       </motion.h2>
 
-      <div className="max-w-2xl space-y-6 text-xl sm:text-2xl leading-relaxed">
+      <div className="max-w-2xl space-y-6 text-xl sm:text-2xl leading-relaxed font-romantic">
 
-        <p>The moon doesn’t compete with the stars.</p>
-        <p>The ocean doesn’t question its depth.</p>
-        <p>And you… don’t need to prove your worth.</p>
-
-        <p className="mt-10">
-          You don’t need validation.
+        <p>
+          It's not just your smile.
         </p>
 
         <p>
-          You don’t need comparison.
+          Not just the way you get dramatic and then laugh five minutes later.
         </p>
 
-        <p className="mt-8 font-semibold text-white">
-          You walk into a room and the world adjusts.
+        <p>
+          Not even the way you care for people more than they deserve.
         </p>
 
-        <p className="mt-6 text-gray-300">
-          That’s not confidence.
-          <br />
-          That’s presence.
+        <p className="mt-8">
+          It's the way you make my world feel softer.
         </p>
 
-        <p className="mt-8 text-amber-200 text-2xl font-semibold font-romantic tracking-wide">
-  That’s what it feels like to stand before a goddess.
-</p>
+        <p>
+          Calmer.
+        </p>
+
+        <p>
+          Brighter — without even trying.
+        </p>
+
+        <p className="mt-10 text-white font-semibold">
+          You don't enter a room.
+        </p>
+
+        <p>
+          You change the atmosphere.
+        </p>
+
+        <p className="mt-8">
+          And when I look at you…
+        </p>
+
+        <p>
+          I don't see someone I have to impress.
+        </p>
+
+        <p>
+          I see someone I want to protect.
+        </p>
+
+        <p>
+          Someone I want to build with.
+        </p>
+
+        <p className="mt-10 text-amber-200 text-3xl font-semibold font-romantic">
+          Someone who feels like a goddess —
+        </p>
+
+        <p className="text-amber-200 text-2xl font-semibold font-romantic">
+          not because she demands it,
+        </p>
+
+        <p className="text-amber-200 text-2xl font-semibold font-romantic">
+          but because she simply is.
+        </p>
 
       </div>
-
     </section>
   );
 }
