@@ -53,7 +53,7 @@ export default function Letter() {
         className="mb-12 text-lg text-gray-300 max-w-xl leading-relaxed"
       >
         Not just today.  
-        Not just because it’s your birthday.  
+        Not just because it's your birthday.  
         But because you are you.
       </motion.p>
 
@@ -84,7 +84,7 @@ export default function Letter() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setShowVideo(true)}
-            className="mt-10 px-8 py-3 bg-gradient-to-r from-amber-200/20 to-rose-200/20 border border-white/20 rounded-full text-amber-100 font-medium transition"
+            className="mt-10 px-8 py-3 bg-linear-to-r from-amber-200/20 to-rose-200/20 border border-white/20 rounded-full text-amber-100 font-medium transition"
           >
             There's something I need to tell you...
           </motion.button>
@@ -100,11 +100,10 @@ export default function Letter() {
           className="mt-16 bg-white/10 backdrop-blur-xl p-6 rounded-3xl border border-white/20 shadow-2xl max-w-3xl w-full"
         >
           <video
-            ref={videoRef}
             controls
+            preload="metadata"
             className="rounded-2xl w-full"
             onPlay={() => pauseMusic()}
-            onPause={() => playMusic()}
             onEnded={() => playMusic()}
           >
             <source src="/video/sakshi-birthday.mp4" type="video/mp4" />

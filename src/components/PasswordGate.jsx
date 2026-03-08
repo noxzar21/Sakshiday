@@ -58,7 +58,7 @@ export default function PasswordGate({ children }) {
 
             <button
               onClick={handleUnlock}
-              className="mt-6 px-6 py-3 rounded-full bg-gradient-to-r from-rose-300/30 to-amber-200/30 border border-white/20 hover:scale-105 transition"
+              className="mt-6 px-6 py-3 rounded-full bg-linear-to-r from-rose-300/30 to-amber-200/30 border border-white/20 hover:scale-105 transition"
             >
               Unlock
             </button>

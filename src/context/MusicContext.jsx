@@ -1,38 +1,48 @@
-   import { createContext, useContext, useRef, useState } from "react";
+import { createContext, useContext, useRef, useState } from "react";
 import { Howl } from "howler";
 
 const MusicContext = createContext();
 
 export function MusicProvider({ children }) {
   const [playing, setPlaying] = useState(false);
-  const soundRef = useRef(null);
-
-  if (!soundRef.current) {
-    soundRef.current = new Howl({
+  const soundRef = useRef(
+    new Howl({
       src: ["/music.mp3"],
       loop: true,
       volume: 0.6,
-    });
-  }
+      html5: true
+    })
+  );
 
   const playMusic = () => {
-    soundRef.current.play();
-    setPlaying(true);
+    const sound = soundRef.current;
+
+    if (!sound.playing()) {
+      sound.play();
+      setPlaying(true);
+    }
   };
 
   const pauseMusic = () => {
-    soundRef.current.pause();
-    setPlaying(false);
+    const sound = soundRef.current;
+
+    if (sound.playing()) {
+      sound.pause();
+      setPlaying(false);
+    }
   };
 
   const toggleMusic = () => {
-    if (playing) pauseMusic();
-    else playMusic();
+    if (playing) {
+      pauseMusic();
+    } else {
+      playMusic();
+    }
   };
 
   return (
     <MusicContext.Provider
-      value={{ playing, toggleMusic, playMusic, pauseMusic }}
+      value={{ playing, playMusic, pauseMusic, toggleMusic }}
     >
       {children}
     </MusicContext.Provider>
