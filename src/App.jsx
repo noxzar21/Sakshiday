@@ -8,6 +8,7 @@ import Finale from "./components/Finale";
 import MusicToggle from "./components/MusicToggle";
 
 import { MusicProvider } from "./context/MusicContext";
+import { Analytics } from "@vercel/analytics/react";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
 
         </div>
       </MusicProvider>
+      <Analytics />
     </PasswordGate>
   );
 }
